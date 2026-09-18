@@ -130,3 +130,7 @@ try {
         Remove-Item -LiteralPath $scratch -Recurse -Force -ErrorAction SilentlyContinue
     }
 }
+
+# 被测子进程最后一个用例预期以非零退出；显式结束，避免 Windows PowerShell
+# 把那个“预期失败”的 $LASTEXITCODE 当成整个测试的失败码。
+exit 0
